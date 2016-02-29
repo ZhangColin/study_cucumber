@@ -2,5 +2,5 @@ source :rubygems
 
 group :test do
     gem 'cucumber'
-    gem 'RSpec'
+    gem 'rspec-expectations', '~> 3.4'
 end

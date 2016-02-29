@@ -17,12 +17,17 @@ GEM
     gherkin (3.2.0)
     multi_json (1.11.2)
     multi_test (0.1.2)
+    rspec-expectations (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-support (3.4.1)
 
 PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
   cucumber
+  rspec-expectations (~> 3.4)
 
 BUNDLED WITH
    1.11.2
