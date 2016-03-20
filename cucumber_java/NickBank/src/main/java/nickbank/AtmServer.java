@@ -10,14 +10,15 @@ import org.eclipse.jetty.servlet.ServletHolder;
 public class AtmServer {
     private final Server _server;
 
-    public AtmServer(int port) {
-        this._server = new Server(9988);
+    public AtmServer(int port, CashSlot cashSlot, Account account) {
+        this._server = new Server(port);
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         _server.setHandler(context);
 
-        context.addServlet(new ServletHolder(new AtmServlet()), "/*");
+        context.addServlet(new ServletHolder(new AtmServlet()), "/");
+        context.addServlet(new ServletHolder(new WithdrawalServlet(cashSlot, account)), "/withdraw");
     }
 
     public void start() throws Exception{
@@ -30,6 +31,6 @@ public class AtmServer {
     }
 
     public static void main(String[] args) throws Exception {
-        new AtmServer(9988).start();
+        //new AtmServer(9988).start();
     }
 }

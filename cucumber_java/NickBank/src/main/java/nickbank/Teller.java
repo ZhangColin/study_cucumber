@@ -1,17 +1,8 @@
 package nickbank;
 
 /**
- * Created by Administrator on 2016/3/19.
+ * Created by Administrator on 2016/3/20.
  */
-public class Teller {
-    private CashSlot cashSlot;
-
-    public Teller(CashSlot cashSlot) {
-        this.cashSlot = cashSlot;
-    }
-
-    public void withdrawFrom(Account myAccount, int yuans) {
-        myAccount.debit(yuans);
-        cashSlot.dispense(yuans);
-    }
+public interface Teller {
+    void withdrawFrom(Account myAccount, int yuans);
 }
