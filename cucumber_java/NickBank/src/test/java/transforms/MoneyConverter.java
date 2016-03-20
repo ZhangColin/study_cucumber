@@ -1,0 +1,21 @@
+package transforms;
+
+import cucumber.api.Transformer;
+import nickbank.Money;
+
+/**
+ * Created by Administrator on 2016/3/19.
+ */
+public class MoneyConverter extends Transformer<Money> {
+
+
+    @Override
+    public Money transform(String amount) {
+        String [] numbers = amount.split("\\.");
+
+        int yuans = Integer.parseInt(numbers[0]);
+        int cents = Integer.parseInt(numbers[1]);
+
+        return new Money(yuans, cents);
+    }
+}
