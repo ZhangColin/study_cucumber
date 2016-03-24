@@ -1,9 +1,10 @@
-package support;
+package hooks;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriverException;
+import support.KnowTheDomain;
 
 /**
  * Created by Administrator on 2016/3/20.

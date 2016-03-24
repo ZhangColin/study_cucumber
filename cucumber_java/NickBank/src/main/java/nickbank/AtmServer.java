@@ -28,6 +28,7 @@ public class AtmServer {
 
     public void stop() throws Exception{
         _server.stop();
+        System.out.println("服务器关闭");
     }
 
     public static void main(String[] args) throws Exception {

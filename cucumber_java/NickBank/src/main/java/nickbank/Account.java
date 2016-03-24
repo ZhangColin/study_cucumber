@@ -9,7 +9,7 @@ public class Account {
     public Account() {
     }
 
-    public void deposit(Money amount){
+    public void credit(Money amount){
         _balance=_balance.add(amount);
     }
 

@@ -19,7 +19,7 @@ public class AccountSteps {
 
     @假如("^给一个账户存入(\\d+\\.\\d+)元$")
     public void 给一个账户存入元(@Transform(MoneyConverter.class)Money amount) throws Throwable {
-        _helper.getMyAccount().deposit(amount);
+        _helper.getMyAccount().credit(amount);
     }
 
     @那么("^账户应该还有(\\d+\\.\\d+)元余额$")
