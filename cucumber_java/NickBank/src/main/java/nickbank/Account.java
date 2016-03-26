@@ -1,23 +1,25 @@
 package nickbank;
 
+
 /**
  * Created by Administrator on 2016/3/19.
  */
 public class Account {
-    private Money _balance = new Money(0, 0);
+    private TransactionQueue queue = new TransactionQueue();
 
     public Account() {
     }
 
     public void credit(Money amount){
-        _balance=_balance.add(amount);
+        queue.write("+"+amount.toString());
     }
 
     public Money getBalance() {
-        return _balance;
+        return BalanceStore.getBalance();
     }
 
     public void debit(int yuans) {
-        _balance = _balance.minus(new Money(yuans, 0));
+        Money amount = new Money(yuans, 0);
+        queue.write("-"+amount.toString());
     }
 }

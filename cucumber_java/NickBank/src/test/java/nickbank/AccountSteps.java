@@ -23,7 +23,24 @@ public class AccountSteps {
     }
 
     @那么("^账户应该还有(\\d+\\.\\d+)元余额$")
-    public void 账户应该还有元余额(@Transform(MoneyConverter.class)Money balance) throws Throwable {
+    public void 账户应该还有元余额(@Transform(MoneyConverter.class) Money balance) throws Throwable {
+        /*try{
+            Thread.sleep(2000);
+        }
+        catch (InterruptedException e){
+            e.printStackTrace();
+        }*/
+
+        int timeoutMilliSecs = 3000;
+        int pollIntervalMilliSecs = 100;
+
+        while (!_helper.getMyAccount().getBalance().equals(balance)
+                && timeoutMilliSecs>0){
+            Thread.sleep(pollIntervalMilliSecs);
+
+            timeoutMilliSecs-=pollIntervalMilliSecs;
+        }
+
         Assert.assertEquals("不正确的账户余额 - ", balance, _helper.getMyAccount().getBalance());
     }
 }
