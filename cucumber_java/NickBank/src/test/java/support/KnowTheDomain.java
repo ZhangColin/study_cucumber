@@ -2,10 +2,11 @@ package support;
 
 import nickbank.Account;
 import nickbank.CashSlot;
-import nickbank.AutomatedTeller;
 import nickbank.Teller;
+import org.javalite.activejdbc.Base;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+
 
 /**
  * Created by Administrator on 2016/3/19.
@@ -13,6 +14,26 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 public class KnowTheDomain {
     private Account _myAccount;
 
+    public KnowTheDomain() {
+        try{
+            /*Instrumentation instrumentation = new Instrumentation();
+            instrumentation.setOutputDirectory("target/classes");
+            instrumentation.instrument();*/
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (!Base.hasConnection()){
+            Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/bank", "teller", "password");
+            /*try {
+                Base.connection().setAutoCommit(false);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }*/
+        }
+
+        Account.deleteAll();
+    }
 
     private static KnowTheDomain _helper;
     public static KnowTheDomain getHelper(){
@@ -25,7 +46,8 @@ public class KnowTheDomain {
 
     public Account getMyAccount(){
         if (_myAccount==null){
-            _myAccount = new Account();
+            _myAccount = new Account(1234);
+            _myAccount.saveIt();
         }
 
         return _myAccount;

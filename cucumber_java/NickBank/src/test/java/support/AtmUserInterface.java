@@ -19,14 +19,14 @@ public class AtmUserInterface implements Teller {
     }
 
     public void withdrawFrom(Account myAccount, int yuans) {
-        try{
+        //try{
             _webDriver.get("http://localhost:"+ ServerHooks.PORT);
             _webDriver.findElement(By.id("amount"))
                     .sendKeys(String.valueOf(yuans));
             _webDriver.findElement(By.id("withdraw")).click();
-        }
+        /*}
         finally {
             _webDriver.close();
-        }
+        }*/
     }
 }
