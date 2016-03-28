@@ -5,7 +5,6 @@ import hooks.ServerHooks;
 import nickbank.Account;
 import nickbank.Teller;
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 /**
@@ -14,8 +13,8 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 public class AtmUserInterface implements Teller {
     private final EventFiringWebDriver _webDriver;
 
-    public AtmUserInterface() {
-        this._webDriver = KnowTheDomain.getHelper().getWebDriver();
+    public AtmUserInterface(MyWebDriver _webDriver) {
+        this._webDriver = _webDriver;
     }
 
     public void withdrawFrom(Account myAccount, int yuans) {

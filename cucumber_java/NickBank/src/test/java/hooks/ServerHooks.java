@@ -2,8 +2,10 @@ package hooks;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import nickbank.Account;
+import nickbank.AccountRepository;
 import nickbank.AtmServer;
-import support.KnowTheDomain;
+import nickbank.CashSlot;
 
 /**
  * Created by Administrator on 2016/3/20.
@@ -12,12 +14,18 @@ public class ServerHooks {
     public static final int PORT = 8887;
 
     private AtmServer _server;
-    private KnowTheDomain _helper;
+
+    private Account account;
+    private CashSlot cashSlot;
+
+    public ServerHooks( CashSlot cashSlot) {
+        this.account = AccountRepository.get(1234);
+        this.cashSlot = cashSlot;
+    }
 
     @Before
     public void startServer() throws Exception {
-        _helper = KnowTheDomain.getHelper();
-        _server = new AtmServer(PORT, _helper.getCashSlot(), _helper.getMyAccount());
+        _server = new AtmServer(PORT, cashSlot, account);
         _server.start();
     }
 
