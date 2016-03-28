@@ -1,11 +1,14 @@
 package support;
 
 import nickbank.Account;
+import nickbank.AccountRepository;
 import nickbank.CashSlot;
 import nickbank.Teller;
 import org.javalite.activejdbc.Base;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+
+import java.sql.SQLException;
 
 
 /**
@@ -14,7 +17,7 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 public class KnowTheDomain {
     private Account _myAccount;
 
-    public KnowTheDomain() {
+    public KnowTheDomain() throws SQLException {
         try{
             /*Instrumentation instrumentation = new Instrumentation();
             instrumentation.setOutputDirectory("target/classes");
@@ -23,31 +26,41 @@ public class KnowTheDomain {
             e.printStackTrace();
         }
 
-        if (!Base.hasConnection()){
-            Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/bank", "teller", "password");
-            /*try {
+        /*if (!Base.hasConnection()){
+            Base.open("com.mysql.jdbc.Driver",
+                    "jdbc:mysql://localhost/bank",
+                    "teller",
+                    "password");
+            try {
                 Base.connection().setAutoCommit(false);
             } catch (SQLException e) {
                 e.printStackTrace();
-            }*/
-        }
+            }
+        }*/
 
-        Account.deleteAll();
+        AccountRepository.deleteAll();
     }
 
     private static KnowTheDomain _helper;
-    public static KnowTheDomain getHelper(){
+    public static KnowTheDomain getHelper()  {
         if (_helper == null){
-            _helper = new KnowTheDomain();
+            try {
+                _helper = new KnowTheDomain();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return _helper;
     }
 
-    public Account getMyAccount(){
+    public Account getMyAccount() {
         if (_myAccount==null){
             _myAccount = new Account(1234);
-            _myAccount.saveIt();
+            AccountRepository.insert(_myAccount);
+        }
+        else{
+            _myAccount = AccountRepository.get(_myAccount.getNumber());
         }
 
         return _myAccount;

@@ -1,20 +1,20 @@
 package nickbank;
 
 
-import org.javalite.activejdbc.Model;
-
 /**
  * Created by Administrator on 2016/3/19.
  */
-public class Account extends Model {
+public class Account {
     private TransactionQueue queue = new TransactionQueue();
 
+    private int number;
+    private Money balance;
     public Account() {
     }
 
-    public Account(int number){
-        setInteger("number", number);
-        setString("balance", "0.00");
+    public Account(int number)  {
+        this.number = number;
+        balance = new Money(0,0);
     }
 
     public void credit(Money amount){
@@ -27,16 +27,15 @@ public class Account extends Model {
     }
 
     public int getNumber() {
-        return getInteger("number");
+        return this.number;
     }
 
     public Money getBalance() {
-        refresh();
-        return new Money(getString("balance"));
+        return balance;
     }
 
-    public void setBalance(Money amount){
-        setString("balance", amount.toString().substring(1));
-        saveIt();
+    public void setBalance(Money amount) {
+        balance = amount;
     }
+
 }
