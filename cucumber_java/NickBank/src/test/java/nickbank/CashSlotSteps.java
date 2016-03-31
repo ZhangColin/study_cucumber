@@ -2,16 +2,18 @@ package nickbank;
 
 import cucumber.api.java.zh_cn.那么;
 import org.junit.Assert;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by Administrator on 2016/3/19.
  */
 public class CashSlotSteps {
+    @Autowired
     CashSlot cashSlot;
 
-    public CashSlotSteps(CashSlot cashSlot) {
+    /*public CashSlotSteps(CashSlot cashSlot) {
         this.cashSlot = cashSlot;
-    }
+    }*/
 
     @那么("^ATM机应该吐出(\\d+)元$")
     public void atm机应该吐出元(int yuans) throws Throwable {

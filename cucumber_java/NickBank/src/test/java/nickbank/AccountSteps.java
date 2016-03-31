@@ -4,21 +4,23 @@ import cucumber.api.Transform;
 import cucumber.api.java.zh_cn.假如;
 import cucumber.api.java.zh_cn.那么;
 import org.junit.Assert;
+import org.springframework.beans.factory.annotation.Autowired;
 import transforms.MoneyConverter;
 
 /**
  * Created by Administrator on 2016/3/19.
  */
 public class AccountSteps {
+    @Autowired
     Account account;
 
-    public AccountSteps() {
+    /*public AccountSteps() {
 
-    }
+    }*/
 
     @假如("^给一个账户存入(\\d+\\.\\d+)元$")
     public void 给一个账户存入元(@Transform(MoneyConverter.class)Money amount) throws Throwable {
-        this.account = AccountRepository.get(1234);
+        //this.account = AccountRepository.get(1234);
         account.credit(amount);
     }
 
