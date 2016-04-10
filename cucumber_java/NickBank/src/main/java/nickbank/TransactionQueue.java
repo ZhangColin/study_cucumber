@@ -7,9 +7,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
 
-/**
- * Created by Administrator on 2016/3/26.
- */
 public class TransactionQueue {
     private static String MESSAGES_FOLDER="./messages";
     private static String MESSAGE_FILE_PATH = "%s/%03d";

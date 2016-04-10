@@ -9,9 +9,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
 
-/**
- * Created by Administrator on 2016/3/28.
- */
 public class AccountRepository {
     public static Account get(int number){
         try {

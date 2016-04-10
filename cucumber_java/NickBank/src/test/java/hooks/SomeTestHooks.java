@@ -4,9 +4,6 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
-/**
- * Created by Administrator on 2016/3/20.
- */
 public class SomeTestHooks {
     @Before
     public void beforeCallingScenario(){

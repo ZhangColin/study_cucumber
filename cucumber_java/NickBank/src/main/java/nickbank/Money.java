@@ -3,9 +3,6 @@ package nickbank;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Administrator on 2016/3/19.
- */
 public class Money {
     private int _yuans;
     private int _cents;

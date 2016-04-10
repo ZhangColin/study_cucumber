@@ -3,9 +3,6 @@ package transforms;
 import cucumber.api.Transformer;
 import nickbank.Money;
 
-/**
- * Created by Administrator on 2016/3/19.
- */
 public class MoneyConverter extends Transformer<Money> {
 
 

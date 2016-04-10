@@ -4,9 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Created by Administrator on 2016/3/28.
- */
 public class ConnTools {
     private static String dirverClassName = "com.mysql.jdbc.Driver";
     private static String url = "jdbc:mysql://localhost/bank";

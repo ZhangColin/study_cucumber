@@ -8,9 +8,6 @@ import nickbank.AtmServer;
 import nickbank.CashSlot;
 import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- * Created by Administrator on 2016/3/20.
- */
 public class ServerHooks {
     public static final int PORT = 8887;
 
@@ -20,11 +17,6 @@ public class ServerHooks {
     private Account account;
     @Autowired
     private CashSlot cashSlot;
-
-    /*public ServerHooks( CashSlot cashSlot) {
-        this.account = AccountRepository.get(1234);
-        this.cashSlot = cashSlot;
-    }*/
 
     @Before
     public void startServer() throws Exception {

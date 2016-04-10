@@ -1,16 +1,11 @@
 package hooks;
 
-import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import nickbank.Account;
 import nickbank.AccountRepository;
-import nickbank.BalanceStore;
 import nickbank.TransactionQueue;
-import org.javalite.activejdbc.Base;
+import support.AtmInterfaceFactory;
 
-/**
- * Created by Administrator on 2016/3/26.
- */
 public class ResetHooks {
     @Before(order = 1)
     public void reset(){
@@ -20,10 +15,7 @@ public class ResetHooks {
         AccountRepository.insert(_myAccount);
 
         TransactionQueue.clear();
-    }
 
-    /*@After
-    public void rollback(){
-        Base.rollbackTransaction();
-    }*/
+        AtmInterfaceFactory.reset();
+    }
 }

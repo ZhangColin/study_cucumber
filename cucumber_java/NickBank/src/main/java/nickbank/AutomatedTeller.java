@@ -1,17 +1,10 @@
 package nickbank;
 
-/**
- * Created by Administrator on 2016/3/19.
- */
-public class AutomatedTeller implements Teller {
-    private CashSlot cashSlot;
+public class AutomatedTeller {
 
-    public AutomatedTeller(CashSlot cashSlot) {
-        this.cashSlot = cashSlot;
-    }
-
-    public void withdrawFrom(Account myAccount, int yuans) {
-        myAccount.debit(yuans);
+    public static void withdrawFrom(CashSlot cashSlot, Account myAccount, int yuans) {
+        // TODO: 这里要考虑一个事务的问题
         cashSlot.dispense(yuans);
+        myAccount.debit(yuans);
     }
 }

@@ -6,16 +6,13 @@ import nickbank.TransactionProcessor;
 
 import java.sql.SQLException;
 
-/**
- * Created by Administrator on 2016/3/26.
- */
 public class BackgroundProcessHooks {
     private Thread transactionProcessorThread;
 
     @Before
-    public void startBackgroundThread(){
-        transactionProcessorThread = new Thread(){
-            public void run(){
+    public void startBackgroundThread() {
+        transactionProcessorThread = new Thread() {
+            public void run() {
                 TransactionProcessor processor = new TransactionProcessor();
 
                 processor.process();
@@ -26,7 +23,7 @@ public class BackgroundProcessHooks {
     }
 
     @After
-    public void stopBackgroundThread(){
+    public void stopBackgroundThread() {
         transactionProcessorThread.interrupt();
     }
 }

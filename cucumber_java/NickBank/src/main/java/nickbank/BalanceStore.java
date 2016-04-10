@@ -6,9 +6,6 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
-/**
- * Created by Administrator on 2016/3/26.
- */
 public class BalanceStore {
     private static String BALANCE_FILE_PATH = "./balance";
 
