@@ -1,4 +1,4 @@
-package nickbank;
+package nicebank;
 
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;

@@ -1,4 +1,4 @@
-package nickbank;
+package nicebank;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

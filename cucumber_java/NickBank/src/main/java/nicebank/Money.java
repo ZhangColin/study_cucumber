@@ -1,4 +1,4 @@
-package nickbank;
+package nicebank;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

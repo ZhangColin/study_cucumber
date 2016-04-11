@@ -1,8 +1,8 @@
 package support;
 
-import nickbank.Account;
-import nickbank.AutomatedTeller;
-import nickbank.CashSlot;
+import nicebank.Account;
+import nicebank.AutomatedTeller;
+import nicebank.CashSlot;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class AtmProgrammaticInterface implements AtmInterface {

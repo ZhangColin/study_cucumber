@@ -1,4 +1,4 @@
-package nickbank;
+package nicebank;
 
 import cucumber.api.Transform;
 import cucumber.api.java.zh_cn.假如;
@@ -24,13 +24,13 @@ public class AccountSteps {
         account.credit(originalBalance);
     }
 
-    @那么("^账户应该还有(\\d+\\.\\d+)元余额$")
-    public void 账户应该还有元余额(@Transform(MoneyConverter.class) Money balance) throws Throwable {
+    @那么("^账户余额还剩(\\d+)\\.(\\d+)元$")
+    public void 账户余额还剩元(@Transform(MoneyConverter.class) Money balance) throws Throwable {
         checkBalanceIs(balance);
     }
 
-    @那么("^账户余额应该没有产生变化$")
-    public void 账户余额应该没有产生变化() throws Throwable {
+    @那么("^账户余额不变$")
+    public void 账户余额不变() throws Throwable {
         checkBalanceIs(originalBalance);
     }
 
@@ -47,6 +47,6 @@ public class AccountSteps {
             timeoutMilliSecs-=pollIntervalMilliSecs;
         }
 
-        Assert.assertEquals("不正确的账户余额 - ", amount, account.getBalance());
+        Assert.assertEquals("账户余额不正确 - ", amount, account.getBalance());
     }
 }

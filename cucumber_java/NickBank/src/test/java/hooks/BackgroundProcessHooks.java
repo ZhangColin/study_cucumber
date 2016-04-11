@@ -2,9 +2,7 @@ package hooks;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import nickbank.TransactionProcessor;
-
-import java.sql.SQLException;
+import nicebank.TransactionProcessor;
 
 public class BackgroundProcessHooks {
     private Thread transactionProcessorThread;

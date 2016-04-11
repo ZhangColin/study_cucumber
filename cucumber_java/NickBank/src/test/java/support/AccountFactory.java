@@ -1,7 +1,7 @@
 package support;
 
-import nickbank.Account;
-import nickbank.AccountRepository;
+import nicebank.Account;
+import nicebank.AccountRepository;
 
 public class AccountFactory {
     public static Account createTestAccount(){

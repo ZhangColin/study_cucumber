@@ -1,6 +1,6 @@
 package support;
 
-import nickbank.Teller;
+import nicebank.Teller;
 
 public interface AtmInterface extends Teller {
     void type(int amount);

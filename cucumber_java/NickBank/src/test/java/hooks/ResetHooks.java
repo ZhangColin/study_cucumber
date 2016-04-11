@@ -1,9 +1,9 @@
 package hooks;
 
 import cucumber.api.java.Before;
-import nickbank.Account;
-import nickbank.AccountRepository;
-import nickbank.TransactionQueue;
+import nicebank.Account;
+import nicebank.AccountRepository;
+import nicebank.TransactionQueue;
 import support.AtmInterfaceFactory;
 
 public class ResetHooks {

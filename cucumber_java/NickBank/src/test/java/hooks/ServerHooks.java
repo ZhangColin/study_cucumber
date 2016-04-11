@@ -2,10 +2,9 @@ package hooks;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import nickbank.Account;
-import nickbank.AccountRepository;
-import nickbank.AtmServer;
-import nickbank.CashSlot;
+import nicebank.Account;
+import nicebank.AtmServer;
+import nicebank.CashSlot;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ServerHooks {

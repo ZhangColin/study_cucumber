@@ -1,4 +1,4 @@
-package nickbank;
+package nicebank;
 
 import org.apache.commons.io.FileUtils;
 

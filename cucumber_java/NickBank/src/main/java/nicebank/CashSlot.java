@@ -1,4 +1,4 @@
-package nickbank;
+package nicebank;
 
 public class CashSlot {
     private int _contents;

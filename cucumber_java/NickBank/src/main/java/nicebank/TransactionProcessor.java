@@ -1,4 +1,4 @@
-package nickbank;
+package nicebank;
 
 public class TransactionProcessor {
     private TransactionQueue queue = new TransactionQueue();

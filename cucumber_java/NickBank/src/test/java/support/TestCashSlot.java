@@ -1,7 +1,7 @@
 package support;
 
 
-import nickbank.CashSlot;
+import nicebank.CashSlot;
 
 public class TestCashSlot extends CashSlot {
     private boolean faulty;

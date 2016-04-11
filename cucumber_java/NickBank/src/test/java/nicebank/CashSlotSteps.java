@@ -1,4 +1,4 @@
-package nickbank;
+package nicebank;
 
 import cucumber.api.java.zh_cn.假如;
 import cucumber.api.java.zh_cn.那么;
@@ -10,13 +10,18 @@ public class CashSlotSteps {
     @Autowired
     TestCashSlot cashSlot;
 
-    @那么("^ATM机应该吐出(\\d+)元$")
-    public void atm机应该吐出元(int yuans) throws Throwable {
+    @那么("^取钞口送出(\\d+)元$")
+    public void 取钞口送出元(int yuans) throws Throwable {
         Assert.assertEquals("不正确的账户余额 - ", yuans, cashSlot.getContents());
     }
 
-    @假如("^ATM机有一个开发引起的错误$")
-    public void atm机有一个开发引起的错误() throws Throwable {
+    @假如("^取钞口有一个技术故障$")
+    public void 取钞口有一个技术故障() throws Throwable {
         cashSlot.inijectFault();
+    }
+
+    @假如("^ATM机里只有(\\d+)元$")
+    public void atm机里只有元(int yuans) throws Throwable {
+        cashSlot.load(yuans);
     }
 }

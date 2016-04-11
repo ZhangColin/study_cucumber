@@ -1,4 +1,4 @@
-package nickbank;
+package nicebank;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

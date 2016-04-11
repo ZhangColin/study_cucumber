@@ -2,8 +2,7 @@ package support;
 
 
 import hooks.ServerHooks;
-import nickbank.Account;
-import nickbank.Teller;
+import nicebank.Account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;

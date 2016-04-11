@@ -1,4 +1,4 @@
-package nickbank;
+package nicebank;
 
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
