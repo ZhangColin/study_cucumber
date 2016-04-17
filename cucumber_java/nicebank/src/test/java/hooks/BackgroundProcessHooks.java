@@ -1,3 +1,4 @@
+/*
 package hooks;
 
 import cucumber.api.java.After;
@@ -22,6 +23,12 @@ public class BackgroundProcessHooks {
 
     @After
     public void stopBackgroundThread() {
-        transactionProcessorThread.interrupt();
+        try {
+            transactionProcessorThread.sleep(50);
+        } catch (InterruptedException e) {
+            transactionProcessorThread.interrupt();
+            //e.printStackTrace();
+        }
     }
 }
+*/

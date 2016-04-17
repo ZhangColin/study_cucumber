@@ -14,12 +14,14 @@ public class Account {
     }
 
     public void credit(Money amount){
-        queue.write("+"+amount.toString()+","+getNumber());
+        //queue.write("+"+amount.toString()+","+getNumber());
+        setBalance(this.getBalance().add(amount));
     }
 
     public void debit(int yuans) {
         Money amount = new Money(yuans, 0);
-        queue.write("-"+amount.toString()+","+getNumber());
+        //queue.write("-"+amount.toString()+","+getNumber());
+        setBalance(this.getBalance().minus(amount));
     }
 
     public int getNumber() {

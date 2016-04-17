@@ -31,7 +31,7 @@ public class AtmServer {
         ContextHandlerCollection contexts = new ContextHandlerCollection();
         contexts.setHandlers(new Handler[]{resourceContext, servletContext});
 
-        _server.setHandler(servletContext);
+        _server.setHandler(contexts);
     }
 
     public void start() throws Exception{
@@ -45,7 +45,7 @@ public class AtmServer {
     }
 
     public static void main(String[] args) throws Exception {
-        Base.open("com.mysql.jdbc.Driver","jdbc:mysql://localhost/bank", "teller", "password");
+        //Base.open("com.mysql.jdbc.Driver","jdbc:mysql://localhost/bank", "teller", "password");
         new AtmServer(9988, new CashSlot(), new Account()).start();
     }
 }

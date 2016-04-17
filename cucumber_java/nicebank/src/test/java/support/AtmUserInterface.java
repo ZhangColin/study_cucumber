@@ -33,8 +33,7 @@ public class AtmUserInterface implements AtmInterface {
         for (int i = 0; i<amountString.length(); i++){
             input.sendKeys(convertToKey(amountString.charAt(i)));
         }
-
-        ask("Ready to continue");
+        //_webDriver.findElement(By.id("withdraw")).click();
     }
 
     private Keys convertToKey(char digit){
@@ -56,7 +55,7 @@ public class AtmUserInterface implements AtmInterface {
     public boolean isDisplaying(String message) {
         By locator = By.xpath("//*[contains(text(),'" + message + "')]");
 
-        WebDriverWait wait = new WebDriverWait(_webDriver, 2, 30);
+        WebDriverWait wait = new WebDriverWait(_webDriver, 6, 30);
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 
         List<WebElement> list = _webDriver.findElements(locator);

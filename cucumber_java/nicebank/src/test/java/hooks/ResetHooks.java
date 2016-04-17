@@ -9,12 +9,12 @@ import support.AtmInterfaceFactory;
 public class ResetHooks {
     @Before(order = 1)
     public void reset(){
+        //TransactionQueue.clear();
         AccountRepository.deleteAll();
 
         Account _myAccount = new Account(1234);
         AccountRepository.insert(_myAccount);
 
-        TransactionQueue.clear();
 
         AtmInterfaceFactory.reset();
     }
