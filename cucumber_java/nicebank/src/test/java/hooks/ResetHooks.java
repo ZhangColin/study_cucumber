@@ -3,7 +3,6 @@ package hooks;
 import cucumber.api.java.Before;
 import nicebank.Account;
 import nicebank.AccountRepository;
-import nicebank.TransactionQueue;
 import support.AtmInterfaceFactory;
 
 public class ResetHooks {
