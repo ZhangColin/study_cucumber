@@ -3,14 +3,19 @@ package fruit;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
+import org.glassfish.jersey.server.ResourceConfig;
 
-import com.sun.jersey.spi.container.servlet.ServletContainer;
+import javax.ws.rs.core.UriBuilder;
+import java.net.URI;
 
 public class FruitServer {
-    private final Server server;
+    private HttpServer server;
+    private int port;
 
     public FruitServer(int port) {
-        ServletHolder servletHolder = new ServletHolder(ServletContainer.class);
+        /*ServletHolder servletHolder = new ServletHolder(ServletContainer.class);
         servletHolder.setInitParameter("com.sun.jersey.config.property.resourceConfigClass",
                 "com.sun.jersey.api.core.PackagesResourceConfig");
         servletHolder.setInitParameter("com.sun.jersey.config.property.packages", "fruit");
@@ -18,12 +23,15 @@ public class FruitServer {
 
         server = new Server(port);
         ServletContextHandler context = new ServletContextHandler(server, "/", ServletContextHandler.SESSIONS);
-        context.addServlet(servletHolder, "/");
+        context.addServlet(servletHolder, "/");*/
+        this.port = port;
     }
 
     public void start() throws Exception{
-        server.start();
-        System.out.println("监听：" + server.getURI());
+        URI baseUri = UriBuilder.fromUri("http://localhost/").port(9998).build();
+        final ResourceConfig resourceConfig = new ResourceConfig(FruitService.class);
+        server = GrizzlyHttpServerFactory.createHttpServer(baseUri, resourceConfig);
+        System.out.println("监听：" + baseUri);
     }
 
     public void stop() throws Exception{

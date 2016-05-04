@@ -1,15 +1,18 @@
 package fruit;
 
 import com.google.gson.JsonParser;
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource;
+import com.google.gson.stream.JsonReader;
 import cucumber.api.java.zh_cn.当;
 import cucumber.api.java.zh_cn.那么;
-import hooks.ServerHooks;
+import org.glassfish.jersey.client.ClientResponse;
 import org.junit.Assert;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.UriBuilder;
 import java.net.HttpURLConnection;
+import java.net.URI;
 
 
 public class RestSteps {
@@ -18,12 +21,15 @@ public class RestSteps {
     @当("^客户端使用Get请求 /fruits$")
     public void 客户端使用get请求_fruits() throws Throwable {
         try {
-            Client client = Client.create();
+            URI baseUri = UriBuilder.fromUri("http://localhost/").port(9998).build();
+            Client client = ClientBuilder.newClient();
+            WebTarget target = client.target(baseUri);
 
-            WebResource webResource = client.resource("http://localhost:" + ServerHooks.PORT + "/fruits");
+            response = target.path("/fruits").request().get(ClientResponse.class);
+            //WebResource webResource = client.resource("http://localhost:" + ServerHooks.PORT + "/fruits");
 
-            response = webResource.type("application/json")
-                    .get(ClientResponse.class);
+            //response = webResource.type("application/json")
+                    //.get(ClientResponse.class);
         } catch (RuntimeException e) {
             throw e;
         } catch (Exception e) {
@@ -40,6 +46,6 @@ public class RestSteps {
         JsonParser parser = new JsonParser();
 
         Assert.assertEquals("Unexpected JSON.",
-                parser.parse(jsonExpected), parser.parse(response.getEntity(String.class)));
+                parser.parse(jsonExpected), parser.parse((JsonReader) response.getEntity()));
     }
 }

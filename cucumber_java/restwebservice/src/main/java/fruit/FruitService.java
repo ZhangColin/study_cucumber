@@ -13,7 +13,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.util.List;
 
-@Path("/")
+@Path("/fruit")
 public class FruitService {
     @GET
     @Path("/fruits")
