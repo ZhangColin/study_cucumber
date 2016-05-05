@@ -1,8 +1,7 @@
 package fruit;
 
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
+
+import com.owlike.genson.ext.jaxrs.GensonJsonConverter;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -30,6 +29,7 @@ public class FruitServer {
     public void start() throws Exception{
         URI baseUri = UriBuilder.fromUri("http://localhost/").port(9998).build();
         final ResourceConfig resourceConfig = new ResourceConfig(FruitService.class);
+        resourceConfig.register(GensonJsonConverter.class);
         server = GrizzlyHttpServerFactory.createHttpServer(baseUri, resourceConfig);
         System.out.println("监听：" + baseUri);
     }
